@@ -4,7 +4,7 @@ pipeline {
         stage ('Build') {
             steps {
                 dir("Teste"){
-                    bat 'docker compose up -d'
+                    bat ' docker container run -d --name comdockercompose --net host alpine sleep 1000'
                   
                 }              
             }

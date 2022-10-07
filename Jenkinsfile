@@ -5,6 +5,7 @@ pipeline {
             steps {
                 dir("Teste"){
                     bat ' docker container run -d --name comdockercompose'
+                    bat ' docker container run -d --name comdockercompose-frontend-1'
                   
                 }              
             }

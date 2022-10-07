@@ -1,12 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage ('Build') {
-            steps {
-                dir("Teste"){
-                    bat ' docker container run -d --name comdockercompose --net host alpine sleep 1000'
-                   bat ' docker container run -d --name comdockercompose-frontend-1 --net host alpine sleep 1000'
-                }              
+        stage ('Build Compose') {
+            dir("Teste"){
+                    bat 'docker-compose up -d'
+                    echo 'Teste realizado com sucesso'
+                }                
             }
         }
         stage ('Test Image') {
@@ -31,6 +30,16 @@ pipeline {
         // }
 
 
-        
+        stage ('Push Image no docker Hub') {
+            steps {
+                script {
+                    //criar credencial ou token de acesso
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
     }
 }

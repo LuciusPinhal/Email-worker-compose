@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage ('Build Compose') {
             dir("Teste"){
-                    bat 'docker-compose up -d'
-                    echo 'Teste realizado com sucesso'
+                    bat 'docker compose up -d'
+                
                 }                
             }
         }

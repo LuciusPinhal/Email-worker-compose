@@ -2,6 +2,7 @@ pipeline {
     agent any
     stages {
         stage ('Build Compose') {
+        steps {
             dir("Teste"){
                     bat 'docker compose up '
                 

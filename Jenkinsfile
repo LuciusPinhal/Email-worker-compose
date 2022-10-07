@@ -4,7 +4,7 @@ pipeline {
         stage ('Build') {
             steps {
                 dir("Teste"){
-                    bat ' docker container run -d'
+                    bat ' docker container run -d --name comdockercompose'
                   
                 }              
             }

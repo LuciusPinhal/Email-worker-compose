@@ -4,7 +4,7 @@ pipeline {
         stage ('Build') {
             steps {
                 dir("Teste"){
-                    bat ' docker container run -d sleep 1000'
+                    bat ' docker container run -d'
                   
                 }              
             }
